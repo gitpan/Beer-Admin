@@ -1,0 +1,19 @@
+Changes
+MANIFEST			This list of files
+Makefile.PL
+README
+SIGNATURE
+TODO
+inc/Beer.pm			Support file - Not installed
+inc/Beer/MakeMaker.pm		Support file - Not installed
+lib/Beer/Admin.pm
+lib/Beer/Admin.pod
+lib/Beer/MakeMaker.pm
+lib/Beer/MakeMaker.pod
+lib/Beer/Manifest.pm
+lib/Beer/Manifest.pod
+lib/Beer/Win32.pm
+lib/Beer/Win32.pod
+lib/inc/Beer.pm
+t/0-signature.t
+t/1-basic.t

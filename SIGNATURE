@@ -1,0 +1,41 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.22.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It would check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 bb4af36538a58fb146f64c19dd400e9136ac72a3 Changes
+SHA1 db4c5431856475393b68c667738b44352ed6c25f MANIFEST
+SHA1 ebf183f2d22df44d2c5dca8d34a8e1ff0f738429 Makefile.PL
+SHA1 014d01c7a08aade9c1806786575209ab739e1d6e README
+SHA1 4d08c28c1525205faeef21d93811fdba5125ad4f TODO
+SHA1 e86d790e9931f1ff2d85d847ec5dbdef6c6e8ff9 inc/Beer.pm
+SHA1 67acbd95daacc1887514a725545b5f36dd120b74 inc/Beer/MakeMaker.pm
+SHA1 7495304147fa8d51324c906c70e632677327ce08 lib/Beer/Admin.pm
+SHA1 1816ad334049c4fde0761153855d144d65f4a396 lib/Beer/Admin.pod
+SHA1 afccc7563a20854347e0ac7414a8aefa3727d0ab lib/Beer/MakeMaker.pm
+SHA1 46d48a96e4611f7b8b07d11e857fd4375a0f44a2 lib/Beer/MakeMaker.pod
+SHA1 36787eddaf8a5beed149064c296d585ed4a1a289 lib/Beer/Manifest.pm
+SHA1 cd8f78406e6baf74df38c71fdc2e46b0ac2d74f9 lib/Beer/Manifest.pod
+SHA1 680762dabb745a866339dc54d43397ca516138c0 lib/Beer/Win32.pm
+SHA1 5be6b902c26b870baccf3cbdef2623f552af31f2 lib/Beer/Win32.pod
+SHA1 e86d790e9931f1ff2d85d847ec5dbdef6c6e8ff9 lib/inc/Beer.pm
+SHA1 16c1ad0988e2bf31fe575ec0254a58f468aae110 t/0-signature.t
+SHA1 fc7f37e1172c748acbaa490f2e47c6e5d6aec247 t/1-basic.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.1 (FreeBSD)
+
+iD8DBQE+X4dqtLPdNzw1AaARAj9PAJ95vNas9H1002EcTzaF4WJm+oODuQCZAeBK
+i/DDdhQYlXn21yBP3bNKcuo=
+=RKIT
+-----END PGP SIGNATURE-----

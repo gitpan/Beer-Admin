@@ -1,0 +1,197 @@
+# $File: //member/autrijus/Beer-Admin/lib/Beer/Admin.pod $ $Author: autrijus $
+# $Revision: #1 $ $Change: 4476 $ $DateTime: 2003/02/28 15:58:00 $
+
+=head1 NAME
+
+Beer::Admin - Managing Bundled External Extension Rules (BEERs)
+
+=head1 VERSION
+
+This document describes version 0.10 of Beer::Admin, released
+February 28, 2003.
+
+=head1 SYNOPSIS
+
+In your F<Makefile.PL>:
+
+    use inc::Beer;
+    WriteMakefile();
+
+=head1 DESCRIPTION
+
+This module provides a drop-in replacement for B<ExtUtils::MakeMaker>.
+It is designed to let module authors reduce duplicated codes in
+F<Makefile.PL> (and eventually F<Build.PL>, etc).
+
+To start using it, just replace the C<use ExtUtils::MakeMaker> line
+from F<Makefile.PL> with C<use inc::Beer>, then run it once:
+
+    % perl Makefile.PL
+    Preparing inc
+    Filling inc/Beer.pm
+    Filling inc/Beer/MakeMaker.pm
+    Writing Makefile for Some::Module
+    Updating your MANIFEST file:
+    Adding 'inc/Beer.pm'
+    Adding 'inc/Beer/MakeMaker.pm
+
+Now your distribution will have an extra F<inc/> directory, with
+the minimal loader code F<inc/Beer.pm> copied into it.  Also, since
+you made use of the C<WriteMakefile> function, the B<Beer::MakeMaker> 
+extension is also copied into F<inc/>.
+
+This way, end-users of your distribution will not need to install
+anything extra; all necessary libraries are bundled with it.  Note
+that because it will not bundle POD files, unused extensions or
+B<Beer::Admin> itself, the impact on distribution size is minimized.
+
+=head1 EXTENSIONS
+
+All extensions belong to the B<Beer::*> namespace.  The first time
+F<Makefile.PL> makes use of an extention's exported function, it
+will be automatically copied to the F<inc/Beer/> directory, and
+becomes I<fixed> -- i.e. even if the user installs a different
+version of the same extension, the bundled one will still be used.
+
+If you wish to upgrade extensions in F<inc/> with installed ones,
+simply remove the F<inc/> directory and run C<perl Makefile.PL>
+again.  Alternatively, type C<make reset> will also do this for you.
+
+There are currently three extensions shipped with B<Beer::Admin>;
+
+=over 4
+
+=item Beer::MakeMaker
+
+A wrapper to B<ExtUtils::MakeMaker>; it adds several extra C<make>
+targets, as well as being more intelligent at guessing unspecified
+arguments.
+
+=item Beer::Manifest
+
+Exports functions for manipulating and updating the F<MANIFEST> file.
+
+=item Beer::Win32
+
+Functions related for installing modules on Win32, including
+automatically fetching and installing F<nmake.exe> for users
+that needs it.
+
+=back
+
+Please consult their own documentations for detailed information.
+
+=head1 FAQ
+
+=head2 What are the benefits of using B<Beer::Admin>?
+
+Please consult this module's predeccessor, L<CPAN::MakeMaker>, for a
+full list of arguments for using catalyst-style distribution like
+this module.  Here is a brief overview of the reasons:
+
+    Does everything ExtUtils::MakeMaker does.
+    Requires no installation for end-users.
+    Always up to date.
+    Automatically updates your MANIFEST
+    Distributing scripts is easy.       # needs Beer::Scripts
+    Support for Inline::C.              # needs Beer::Inline
+    Bundle prerequisite modules.        # needs Beer::Bundle
+    Auto-installation of prerequisites. # needs Beer::AutoInstall
+    Support for precompiled binaries.   # needs Beer::PAR
+
+Besides, if you author more than one CPAN modules, chances are there
+are duplicated in their F<Makefile.PL> or with some other CPAN module
+you copied the code from.  B<Beer::Admin> makes it really easy for you
+to abstract away such codes; see next question.
+
+=head2 Can I write my own extensions?
+
+Definitely!  In fact, if you are already a CPAN author, I would
+suggest you to put all your F<Makefile.PL> magics into an extension
+named after your lowercased CPAN ID (e.g. F<Beer::autrijus>),
+which exports all utility functions used by F<Makefile.PL>.
+
+You do not need to release this extension to CPAN at all; simply
+put it in your C<@INC>, under the C<Beer/> directory, and B<Beer::Admin>
+will automatically bundle it with all future distributions you make,
+but never install them into the end-user's computer.
+
+=head2 How is this module different from B<CPAN::MakeMaker>?
+
+This module is not self-modifying.  Also, writing extensions for
+B<Beer::Admin> is easier -- instead of tweaking your local copy
+of C<CPAN/MakeMaker.pm>, simply make a new B<Beer::*> module under
+the C<@INC>.
+
+=head2 Why is the loader named C<inc::Beer>?
+
+The original implementation of B<CPAN::MakeMaker> introduces subtle
+problems for distributions ending with C<CPAN> (e.g. B<CPAN.pm>,
+B<WAIT::Format::CPAN>), because its placement in F<./CPAN/> duplicates
+the real libraries that will get installed; also, the directory name
+F<./CPAN/> may confuse users.
+
+On the other hand, putting bundled, for-build-time-only libraries in
+F<./inc/> is a normal practice, and there is little chance that a
+CPAN distribution will be called C<Something::inc>, so it's much safer
+to use.
+
+Also, it allows for other helper modules like B<ExtUtils::AutoInstall>
+to reside also in F<./inc/>, and to make use of them in the future.
+
+=head2 What does C<Beer::Admin> mean?
+
+On February 28, 2003, the following exchange took place on MagNet
+C<#perl>:
+
+    <ingy> autrijus: I might just advise that only CPAN.pm use 0.11,
+           and not actually release the version for the general public
+    <autrijus> ugh. but i want 0.11 to play with :)
+    <Spoon> 0.11 of what?
+    <autrijus> Spoon: of a highly convoluted module that requires
+               Int 17 to understand.
+    <Spoon> it has no name?
+    <autrijus> no one dare speaking of its name.
+    <autrijus> Spoon: but one can hint; it has the nexus of perl
+               community as its first name, and the humble device that
+               installs modules as its last name
+    <EuroXwrn> Beer::Admin
+    <Spoon> oh. that one.
+    <autrijus> EuroXwrn: that's a good one
+    <Spoon> ingy's module that someone called viral
+    <ingy> Spoon: shhhh
+    * autrijus decides to fork CPAN::MakeMaker into Acme::Beer::Admin
+    <ingy> nice
+
+So there.  It's all Schwern's fault.
+
+=head1 SEE ALSO
+
+L<Beer::MakeMaker>, L<Beer::Manifest>, L<Beer::Win32>
+
+L<CPAN::MakeMaker>, L<CPAN::MakeMaker-Philosophy>, L<ExtUtils::MakeMaker>
+
+=head1 AUTHORS
+
+Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+
+Based on original works by Brian Ingerson E<lt>INGY@cpan.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright (c) 2002. Brian Ingerson. All rights reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See L<http://www.perl.com/perl/misc/Artistic.html>
+
+=cut
+
+# Local variables:
+# c-indentation-style: bsd
+# c-basic-offset: 4
+# indent-tabs-mode: nil
+# End:
+# vim: expandtab shiftwidth=4:

@@ -1,0 +1,52 @@
+# $File: //member/autrijus/Beer-Admin/lib/Beer/Manifest.pod $ $Author: autrijus $
+# $Revision: #1 $ $Change: 4476 $ $DateTime: 2003/02/28 15:58:00 $
+
+=head1 NAME
+
+Beer::Manifest - Extension Rules for ExtUtils::Manifest
+
+=head1 VERSION
+
+This document describes version 0.01 of Beer::Manifest, released
+February 28, 2003.
+
+=head1 SYNOPSIS
+
+In your F<Makefile.PL>:
+
+    use inc::Beer;
+    update_manifest();
+
+=head1 DESCRIPTION
+
+This module provides wrapper functions around B<ExtUtils::Manifest>.
+
+Currently it only exports one function, C<update_manifest>,
+which updates the F<MANIFEST> file to include F<inc/Beer.pm> and
+F<inc/Beer/*> automatically.
+
+=head1 SEE ALSO
+
+L<Beer::Admin>, L<ExtUtils::Manifest>
+
+=head1 AUTHORS
+
+Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See L<http://www.perl.com/perl/misc/Artistic.html>
+
+=cut
+
+# Local variables:
+# c-indentation-style: bsd
+# c-basic-offset: 4
+# indent-tabs-mode: nil
+# End:
+# vim: expandtab shiftwidth=4:

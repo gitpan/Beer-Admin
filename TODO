@@ -1,0 +1,8 @@
+# $File: //member/autrijus/Beer-Admin/TODO $ $Author: autrijus $
+# $Revision: #1 $ $Change: 4476 $ $DateTime: 2003/02/28 15:58:00 $
+
+- Nested extensions like Beer::MakeMaker::Version.
+- Further factor out Beer::MakeMaker to reduce size.
+- Beer support for AutoInstall, Module::Build and PAR.
+- Better management for personal extensions -- maybe Beer::Husbandry?
+

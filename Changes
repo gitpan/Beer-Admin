@@ -1,0 +1,9 @@
+____________________________________________________________________________
+[  4476] By: autrijus                              on 2003/02/28  15:58:00
+        Log: * This be 0.10.
+	   + TODO lib/Beer/Admin.pod lib/Beer/MakeMaker.pod
+	   + lib/Beer/Manifest.pod lib/Beer/Win32.pm
+	   + lib/Beer/Win32.pod
+	   - lib/Beer/System.pm
+	   ! MANIFEST Makefile.PL lib/Beer/Admin.pm
+	   ! lib/Beer/MakeMaker.pm lib/Beer/Manifest.pm

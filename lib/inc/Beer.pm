@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Beer-Admin/lib/inc/Beer.pm $ $Author: autrijus $
-# $Revision: #1 $ $Change: 4474 $ $DateTime: 2003/02/28 14:30:11 $
+# $Revision: #2 $ $Change: 4480 $ $DateTime: 2003/02/28 16:37:37 $
 
 package inc::Beer;
 use strict;
@@ -7,13 +7,13 @@ use vars qw($VERSION $PACKAGE $DIR $FILE);
 
 # the brand we're drinking
 BEGIN {
-    $VERSION = '0.10';
+    $VERSION = '0.11';
     $DIR = $PACKAGE = __PACKAGE__;
     $DIR =~ s!::!/!g;
     $FILE = "$DIR.pm";
 }
 
-# fill a brand if we don't have one
+# fill the bottle if we don't have one
 require Beer::Admin unless -f $FILE;
 
 if (!$INC{"Beer.pm"}) {
@@ -29,6 +29,7 @@ else {
     if (opendir(TRAY, $DIR)) {
 	while (my $brand = readdir(DIR)) {
 	    next unless $brand =~ /\.pm$/i;
+	    print "importing $brand\n";
 
 	    package main;
 	    require "$Beer::DIR/$brand";

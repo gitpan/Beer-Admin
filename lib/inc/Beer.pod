@@ -1,0 +1,80 @@
+# $File: //member/autrijus/Beer-Admin/lib/inc/Beer.pod $ $Author: autrijus $
+# $Revision: #1 $ $Change: 4480 $ $DateTime: 2003/02/28 16:37:37 $
+
+=head1 NAME
+
+inc::Beer - Load Bundled External Extension Rules (BEERs)
+
+=head1 VERSION
+
+This document describes version 0.11 of inc::Beer, released
+February 28, 2003.
+
+=head1 SYNOPSIS
+
+In your F<Makefile.PL>:
+
+    use inc::Beer;
+    WriteMakefile();
+
+=head1 DESCRIPTION
+
+This module bootstraps the B<Beer::Admin> installation with
+the following steps:
+
+=over 4
+
+=item *
+
+First, if F<inc/Beer.pm> does not exist, loads B<Beer::Admin> to
+copy this module to F<inc/>.  This should only happen on the author's
+side, never on the end-user side.
+
+=item *
+
+Reload F<inc/Beer.pm> if the current file is somewhere else.
+This ensures that the bundled version of F<inc/Beer.pm> is always
+preferred over the installed version.
+
+=item *
+
+Look at F<inc/Beer/*.pm> and load all of them.
+
+=item *
+
+Set up a C<main::AUTOLOAD> function to delegate missing function calls
+to C<Beer::Admin::drink> -- again, this should only happen at the
+author's side.
+
+=item *
+
+Provide a C<inc::Beer::purge_self> function for removing bundled files
+under F<inc/>.
+
+=back
+
+=head1 SEE ALSO
+
+L<Beer::Admin>
+
+=head1 AUTHORS
+
+Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.
+
+See L<http://www.perl.com/perl/misc/Artistic.html>
+
+=cut
+
+# Local variables:
+# c-indentation-style: bsd
+# c-basic-offset: 4
+# indent-tabs-mode: nil
+# End:
+# vim: expandtab shiftwidth=4:

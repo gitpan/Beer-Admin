@@ -1,16 +1,16 @@
 # $File: //member/autrijus/Beer-Admin/README $ $Author: autrijus $
-# $Revision: #1 $ $Change: 4474 $ $DateTime: 2003/02/28 14:30:11 $
+# $Revision: #2 $ $Change: 4480 $ $DateTime: 2003/02/28 16:37:37 $
 
-This is the README file for inc::Beer::Admin, the Bundled Environment
-Extension Rules (BEER) loader.  It's a drop-in replacement for
-ExtUtils::MakeMaker, and a fork of CPAN::MakeMaker.
+This is the README file for Beer::Admin, the Bundled Environment
+Extension Rules (BEER) toolkit.  It's a drop-in replacement for
+ExtUtils::MakeMaker, and a descendent of CPAN::MakeMaker.
 
-Please type "perldoc inc::Beer::Admin" after installation to see the
+Please type "perldoc Beer::Admin" after installation to see the
 module usage information.
 
 * Installation
 
-inc::Beer::Admin uses the standard perl module install process:
+Beer::Admin uses the standard perl module install process:
 
 cpansign -v             # see SIGNATURE for details
 perl Makefile.PL
@@ -42,7 +42,7 @@ with 'nmake' in the last three lines.
 
 * Copyright
 
-Copyright 2002, 2003 by Autrijus Tang <autrijus@autrijus.org>.
+Copyright 2003 by Autrijus Tang <autrijus@autrijus.org>.
 Copyright (c) 2002. Brian Ingerson. All rights reserved.
 
 All rights reserved.  You can redistribute and/or modify

@@ -1,11 +1,11 @@
 # $File: //member/autrijus/Beer-Admin/lib/Beer/Admin.pm $ $Author: autrijus $
-# $Revision: #2 $ $Change: 4476 $ $DateTime: 2003/02/28 15:58:00 $
+# $Revision: #3 $ $Change: 4480 $ $DateTime: 2003/02/28 16:37:37 $
 
 package Beer::Admin;
 
 use strict;
 use vars qw($VERSION %Fridge);
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 my $FILE = ($inc::Beer::FILE || "inc/Beer.pm");
 my $DIR  = ($inc::Beer::DIR  || "inc/Beer");

@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Beer-Admin/lib/Beer/Manifest.pm $ $Author: autrijus $
-# $Revision: #2 $ $Change: 4476 $ $DateTime: 2003/02/28 15:58:00 $
+# $Revision: #3 $ $Change: 4480 $ $DateTime: 2003/02/28 16:37:37 $
 
 package Beer::Manifest;
 
@@ -8,12 +8,14 @@ use vars qw(@EXPORT $VERSION @ISA);
 use Cwd;
 use Exporter;
 
-$VERSION    = '0.01';
+$VERSION    = '0.02';
 @EXPORT	    = qw(update_manifest);
 @ISA	    = 'Exporter';
 
 sub update_manifest {
     my ($manifest, $manifest_path, $relative_path) = read_manifest();
+    return unless -w $manifest_path;
+
     my $manifest_changed = 0;
 
     my %manifest;
@@ -35,7 +37,8 @@ sub update_manifest {
             print "Updating your MANIFEST file:\n"
               unless $manifest_changed++;
             print "  Adding '$filepath'\n";
-            push @$manifest, "$filepath\t\tSupport file - Not installed\n";
+	    my $tabs = "\t" x (5 - (int(length($filepath)) / 8));
+            push @$manifest, "$filepath${tabs}Support file - Not installed\n";
             $manifest{$filepath} = 1;
         }
     }
